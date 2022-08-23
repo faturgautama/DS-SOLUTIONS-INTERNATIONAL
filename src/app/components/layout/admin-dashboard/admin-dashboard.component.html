@@ -1,0 +1,35 @@
+<div class="dashboard_admin d-flex flex-nowrap">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-white border-end shadow-sm" style="width: 20%;">
+        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-center text-decoration-none">
+            <span style="font-size: 1rem;">DS Solutions International</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li *ngFor="let item of SidebarMenu" class="nav-item">
+                <a id="{{ item.id }}_a" class="nav-link cursor-pointer" (click)="handleClickSidebarItem(item)">
+                    {{ item.title }}
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <div class="d-flex justify-content-between">
+            <a class="text-dark text-decoration-none">
+                <img src="../../../../assets/image/user.png" alt="" width="25" height="25" class="rounded-circle me-2">
+                <strong>
+                    {{ UserData.displayName }}
+                </strong>
+            </a>
+            <span class="float-end cursor-pointer" (click)="handleCLickSignOut()">
+                <i class="fas fa-sign-out"></i>
+            </span>
+        </div>
+    </div>
+
+    <main style="width: 80%;" class="p-3 h-100">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body h-100" style="overflow-y: auto;">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </main>
+</div>

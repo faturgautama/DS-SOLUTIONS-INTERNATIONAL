@@ -1,0 +1,38 @@
+section#job_opportunity {
+  background-image: url("../../../../assets/image/futsal.png"),
+    linear-gradient(
+      180deg,
+      rgba(79, 79, 79, 0.91) 0%,
+      rgba(54, 54, 54, 0.94) 100%
+    );
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 50vh;
+}
+
+.btn-job-opportunity {
+  background: white !important;
+  color: var(--biru-tua) !important;
+  padding: 0.5rem 2rem !important;
+  border-radius: 10rem !important;
+}
+
+div.job_opportunity_header {
+  text-align: left;
+}
+
+div.job_opportunity_body {
+  text-align: right;
+}
+
+@media (max-width: 576px) {
+  div.job_opportunity_header {
+    text-align: center;
+  }
+
+  div.job_opportunity_body {
+    text-align: center;
+  }
+}

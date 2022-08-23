@@ -1,0 +1,7 @@
+section#carousel {
+  height: 60vh;
+  max-height: 60vh;
+  padding-top: 3rem;
+  overflow-y: hidden;
+  background-color: var(--bs-gray-200);
+}

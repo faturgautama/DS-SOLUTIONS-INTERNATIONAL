@@ -1,0 +1,6 @@
+section#event {
+  height: 100%;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  background-color: var(--bs-gray-100);
+}

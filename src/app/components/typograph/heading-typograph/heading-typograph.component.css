@@ -1,0 +1,13 @@
+p.heading_typograph {
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: var(--biru) !important;
+}
+
+p.heading_typograph::after {
+  content: "";
+  border-bottom: 2px solid var(--hitam);
+  width: 10%;
+  display: block;
+  margin: auto;
+}

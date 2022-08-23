@@ -1,0 +1,45 @@
+<button hidden id="btnClickModalAuth" type="button" class="btn btn-primary" (click)="openModalAuth(template)">
+    Open Authentication Modal
+</button>
+
+<ng-template #template>
+    <div class="modal-header border-0">
+        <h5 class="modal-title pull-left">Sign In</h5>
+        <button type="button" class="btn-close close pull-right" aria-label="Close"
+            (click)="AuthenticationModalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" [formGroup]="Form">
+        <!-- Email Address -->
+        <div class="row mb-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <input type="email" class="form-control" placeholder="Email Address" formControlName="email">
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="row mb-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="row mb-2">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-grid gap-2">
+                <button class="btn btn-primary" type="button" (click)="handleSignIn(Form.value)">
+                    Sign In
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                <span class="text_keterangan ">
+                    By clicking Sign In, you agree to the terms of use.
+                </span>
+            </div>
+        </div>
+    </div>
+</ng-template>

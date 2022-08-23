@@ -1,0 +1,40 @@
+section#who_we_are {
+  height: 100%;
+  padding-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+p.text_who_we_are {
+  font-size: 1rem;
+  color: var(--bs-gray-700);
+  text-align: justify;
+}
+
+img.img_who_we_are {
+  height: 17rem;
+  width: auto;
+}
+
+img.img_who_we_are.first {
+  margin-bottom: 4rem;
+  text-align: right;
+}
+
+.card_detail_who_we_are {
+  border-radius: 20px;
+  background-color: var(--bs-gray-100);
+}
+
+img.img_detail_who_we_are {
+  height: 3rem;
+}
+
+p.text_detail_who_we_are {
+  font-size: 1.25rem;
+}
+
+p.text_child_detail_who_we_are {
+  color: var(--bs-gray-600);
+  font-size: 0.85rem;
+  text-align: justify;
+}

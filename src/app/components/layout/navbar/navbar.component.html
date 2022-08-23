@@ -1,0 +1,29 @@
+<nav class="navbar background-biru fixed-top navbar-expand-lg shadow-sm">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                    <li *ngFor="let item of Menu" class="nav-item cursor-pointer">
+                        <a [id]="item.id" class="nav-link" (click)="handleChangeNavActive(item)">
+                            {{ item.title }}
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex align-items-center">
+                    <p class="nav-link mb-0 text-white cursor-pointer" (click)="handleClickSignIn()">
+                        Sign In
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<app-authentication></app-authentication>

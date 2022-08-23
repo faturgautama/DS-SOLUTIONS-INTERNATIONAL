@@ -1,0 +1,14 @@
+section#our_product {
+  height: 100%;
+  padding-top: 4rem;
+  margin-bottom: 2rem;
+  background-color: var(--bs-gray-100);
+}
+
+.bg_product {
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

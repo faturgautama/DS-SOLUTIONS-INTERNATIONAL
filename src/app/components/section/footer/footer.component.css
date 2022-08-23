@@ -1,0 +1,26 @@
+section#section_footer {
+  background-size: 30rem;
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-top: 5rem;
+  height: 75vh;
+  max-height: 75vh;
+}
+
+div.div_footer_copyright {
+  text-align: left;
+}
+
+@media (max-width: 576px) {
+  section#section_footer {
+    height: 100%;
+    max-height: 100%;
+    padding-top: 5rem;
+    background-size: 23rem;
+    background-position: center center;
+  }
+
+  div.div_footer_copyright {
+    text-align: center;
+  }
+}

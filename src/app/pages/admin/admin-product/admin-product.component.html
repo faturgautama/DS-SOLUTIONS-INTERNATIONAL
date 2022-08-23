@@ -1,0 +1,67 @@
+<app-admin-dashboard>
+    <div class="row h-100">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ps-0">
+            <div class="card shadow-sm h-100">
+                <div class="card-header">
+                    <p class="card-title mb-0">
+                        Data Kategori
+                    </p>
+                </div>
+                <div class="card-body p-0 h-100">
+                    <ul class="list-group">
+                        <li *ngFor="let item of Kategori" [id]="item.id_kategori + '_list_item'"
+                            class="list-group-item border-0 border-bottom cursor-pointer align-items-center"
+                            (click)="selectedKategori(item)">
+                            {{ item.kategori }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 px-0">
+            <div class="card shadow-sm h-100">
+                <div class="card-header">
+                    <p class="card-title mb-0">
+                        Data Jenis per Kategori
+                    </p>
+                </div>
+                <div class="card-body p-0 h-100">
+                    <ul class="list-group">
+                        <li *ngFor="let item of Jenis" [id]="item.id_jenis + '_list_item_jenis'"
+                            class="list-group-item border-0 border-bottom cursor-pointer" (click)="selectedJenis(item)">
+                            {{ item.jenis }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pe-0">
+            <div class="card shadow-sm h-100">
+                <div class="card-header">
+                    <p class="card-title mb-0">
+                        Data Product per Jenis
+                        <span class="badge badge text-bg-primary float-end cursor-pointer"
+                            (click)="navigateToAddProduct()">
+                            Add Product
+                        </span>
+                    </p>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="list-group">
+                        <li *ngFor="let item of Product" [id]="item.id_product + '_list_item_product'"
+                            class="list-group-item border-0 border-bottom cursor-pointer"
+                            (click)="selectedProduct(item)">
+                            {{ item.product }}
+                            <span [id]="item.id_product + '_badge_item_product'" [hidden]="true"
+                                class="badge text-bg-light float-end fw-normal" (click)="navigateToDetailProduct(item)">
+                                Detail
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-admin-dashboard>

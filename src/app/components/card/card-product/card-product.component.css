@@ -1,0 +1,21 @@
+.card_product {
+  border: 0;
+  border-radius: 20px;
+}
+
+.divs_dummy_image {
+  height: 10rem;
+  background-color: var(--biru);
+  border-radius: 20px;
+}
+
+p.card_product_title {
+  font-size: 4rem;
+  line-height: 4rem;
+  font-weight: 600;
+}
+
+p.card_product_description {
+  font-size: 1rem;
+  color: var(--bs-gray-700);
+}

@@ -1,0 +1,105 @@
+<app-admin-dashboard>
+    <app-action-button [ActionButton]="ActionButton" (clickedActionButton)="handleClickActionButton($event)">
+    </app-action-button>
+
+    <div class="row" [formGroup]="FormProduct">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <!-- Kategori -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label for="kategori" class="form-label">
+                        Kategori
+                    </label>
+                    <select id="kategoriDropdown" type="text" class="form-select"
+                        (change)="handleChangeKategori($event)">
+                        <option selected>Pilih Kategori</option>
+                        <option *ngFor="let item of Kategori | async" [value]="item.id_kategori" [text]="item.kategori">
+                            {{ item.kategori }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Jenis -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label for="jenis" class="form-label">
+                        Jenis
+                    </label>
+                    <select id="jenisDropdown" type="text" class="form-select" (change)="handleChangeJenis($event)">
+                        <option selected>Pilih Jenis</option>
+                        <option *ngFor="let item of Jenis" [value]="item.id_jenis" [text]="item.jenis">
+                            {{ item.jenis }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label for="product" class="form-label">
+                        Product
+                    </label>
+                    <input type="text" class="form-control" formControlName="product">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <!-- Harga -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label for="product" class="form-label">
+                        Harga
+                    </label>
+                    <input type="number" class="form-control" formControlName="harga">
+                </div>
+            </div>
+
+            <!-- Keterangan -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label for="keterangan" class="form-label">
+                        Keterangan
+                    </label>
+                    <textarea type="number" class="form-control" formControlName="keterangan" rows="4"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <!-- Is Active -->
+            <div class="row mb-4">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label for="product" class="form-label">
+                        Status Product
+                    </label>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="is_active" id="radioIsActiveTrue"
+                            [value]="true" formControlName="is_active">
+                        <label class="form-check-label" for="radioIsActiveTrue">Active</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="is_active" id="radioIsActiveFalse"
+                            [value]="false" formControlName="is_active">
+                        <label class="form-check-label" for="radioIsActiveFalse">Inactive</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foto -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label for="product" class="form-label">
+                        Foto
+                    </label>
+                    <input type="file" class="form-control" formControlName="path_foto"
+                        (change)="handleChangeFoto($event)">
+                </div>
+            </div>
+        </div>
+    </div>
+</app-admin-dashboard>

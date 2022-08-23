@@ -1,0 +1,26 @@
+<app-admin-dashboard>
+    <app-action-button [ActionButton]="ActionButton" (clickedActionButton)="handleClickActionButton($event)">
+    </app-action-button>
+
+    <div class="row">
+        <div *ngFor="let item of Career" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 py-2 border-top border-bottom">
+            <p class="text_career_location mb-1">
+                {{ item.location }}
+                <span class="badge text-bg-primary float-end fw-normal cursor-pointer"
+                    (click)="handleClickDetail(item)">
+                    Detail
+                </span>
+            </p>
+            <p class="text_career_title mb-0 cursor-pointer" (click)="handleShowContent(item)">
+                {{ item.title }}
+            </p>
+            <p class="text_career_department mb-2">
+                {{ item.department }} Department
+            </p>
+            <p class="text_career_date mb-2">
+                Created at <span> {{ item.time_created | date: 'dd MMMM yyyy HH:mm:ss' }}</span>
+            </p>
+            <p id="content_{{ item.id_career }}" class="text_career_content mb-0"></p>
+        </div>
+    </div>
+</app-admin-dashboard>

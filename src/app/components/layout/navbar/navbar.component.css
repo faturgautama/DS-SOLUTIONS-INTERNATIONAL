@@ -1,0 +1,23 @@
+nav.background-biru {
+  background-color: var(--biru) !important;
+}
+
+li.nav-item {
+  margin-left: 1rem;
+}
+
+li.nav-item > a.nav-link {
+  color: white;
+}
+
+li.nav-item > a.nav-link.active {
+  font-weight: 700;
+  border-bottom: 1px solid white;
+}
+
+a.nav-link:hover {
+  font-weight: 500;
+  transition: transform 250ms, opacity 400ms;
+  transform: translateY(-5px);
+  border-bottom: 1px solid white;
+}

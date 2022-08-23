@@ -1,0 +1,86 @@
+<app-admin-dashboard>
+    <div class="row h-100">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="card h-100">
+                <div class="card-header">
+                    <p class="card-title mb-0">
+                        List Message
+                    </p>
+                </div>
+                <div class="card-body p-0 h-100">
+                    <ul class="list-group">
+                        <li *ngFor="let item of Message | async"
+                            class="list-group-item border-0 border-bottom cursor-pointer"
+                            (click)="handleSeeDetailMessage(item)">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                                    <p class="message_title mb-0">
+                                        {{ item.full_name }}
+                                    </p>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-0">
+                                    <p class="message_date mb-0">
+                                        {{ item.date_created | date: 'dd MMMM yyyy, HH:mm:ss' }}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="card h-100">
+                <div class="card-header">
+                    <p class="card-title mb-0">Message Detail</p>
+                </div>
+                <div class="card-body h-100">
+                    <form [formGroup]="Form">
+                        <div class="row mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label for="" class="form-label">
+                                    Full Name
+                                </label>
+                                <input type="text" class="form-control" readonly formControlName="full_name">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label for="" class="form-label">
+                                    Email
+                                </label>
+                                <input type="text" class="form-control" readonly formControlName="email">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label for="" class="form-label">
+                                    Country
+                                </label>
+                                <input type="text" class="form-control" readonly formControlName="country">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label for="" class="form-label">
+                                    Message
+                                </label>
+                                <textarea type="text" class="form-control" readonly formControlName="message" rows="3">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="row mb-0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label for="" class="form-label">
+                                    Created At
+                                </label>
+                                <input type="text" class="form-control" readonly formControlName="date_created">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-admin-dashboard>

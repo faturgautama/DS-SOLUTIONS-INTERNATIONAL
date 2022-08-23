@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@syncfusion/ej2-base/styles/tailwind.css";
+@import "~@syncfusion/ej2-icons/styles/tailwind.css";
+@import "~@syncfusion/ej2-buttons/styles/tailwind.css";
+@import "~@syncfusion/ej2-splitbuttons/styles/tailwind.css";
+@import "~@syncfusion/ej2-inputs/styles/tailwind.css";
+@import "~@syncfusion/ej2-lists/styles/tailwind.css";
+@import "~@syncfusion/ej2-navigations/styles/tailwind.css";
+@import "~@syncfusion/ej2-popups/styles/tailwind.css";
+@import "~@syncfusion/ej2-richtexteditor/styles/tailwind.css";
+
+:root {
+  --biru: #0088cc;
+  --hitam: #0e0e0e;
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif !important;
+  scroll-behavior: smooth !important;
+  overflow-x: hidden !important;
+  background-color: var(--bs-gray-100);
+}
+
+.row {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+button.btn-biru {
+  border-radius: 10px;
+  background-color: var(--bs-gray-100);
+  border: 1px solid var(--biru);
+  color: var(--biru);
+}
+
+button.btn-biru:hover {
+  background-color: var(--biru);
+  border: 1px solid var(--bs-gray-100);
+  color: white;
+}
