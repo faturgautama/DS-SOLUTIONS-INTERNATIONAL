@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IJenis } from 'src/app/model/jenis.model';
 import { IKategori } from 'src/app/model/kategori.model';
 import { IProduct } from 'src/app/model/product.model';
 import { DashboardService } from 'src/app/services/dashboard.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
     selector: 'app-admin-product',
@@ -19,14 +22,25 @@ export class AdminProductComponent implements OnInit {
 
     Jenis: IJenis[] = [];
     SelectedJenis!: IJenis;
+    JenisModalRef?: BsModalRef;
+    FormJenis: FormGroup;
 
     Product: IProduct[] = [];
     SelectedProduct!: IProduct;
 
     constructor(
         private router: Router,
+        private formBuilder: FormBuilder,
+        private bsModalService: BsModalService,
+        private utilityService: UtilityService,
         private dashboardService: DashboardService,
-    ) { }
+    ) {
+        this.FormJenis = this.formBuilder.group({
+            id_kategori: [0, [Validators.required]],
+            id_jenis: ["", [Validators.required]],
+            jenis: ["", [Validators.required]],
+        })
+    }
 
     ngOnInit(): void {
         this.dashboardService.getKategori()
@@ -39,7 +53,8 @@ export class AdminProductComponent implements OnInit {
 
     selectedKategori(data: IKategori): void {
         this.SelectedKategori = data;
-        this.changeClassActiveKategori(this.SelectedKategori)
+        this.changeClassActiveKategori(this.SelectedKategori);
+        this.id_kategori.setValue(data.id_kategori);
 
         this.dashboardService.getJenis(data.id_kategori)
             .subscribe((result) => {
@@ -77,7 +92,36 @@ export class AdminProductComponent implements OnInit {
         });
     }
 
-    getProductByIdJenis(id_jenis: number): void {
+    handleOpenModalJenis(template: TemplateRef<any>): void {
+        this.JenisModalRef =
+            this.bsModalService.show(
+                template, Object.assign({}, {
+                    class: 'modal-dialog-centered',
+                })
+            )
+    }
+
+    submitJenis(data: any): void {
+        const body = {
+            id_kategori: data.id_kategori,
+            jenis: data.jenis,
+        };
+
+        this.dashboardService.saveJenis(body)
+            .subscribe((result) => {
+                if (result) {
+                    this.utilityService.showCustomAlert('success', 'Success', 'Data Berhasil Disimpan')
+                        .then(() => {
+                            this.FormJenis.reset();
+                            this.id_kategori.setValue(0);
+                            this.jenis.setValue("");
+                            this.bsModalService.hide();
+                        })
+                }
+            })
+    }
+
+    getProductByIdJenis(id_jenis: string): void {
         this.dashboardService.getProduct()
             .pipe(
                 map((result: IProduct[]) => {
@@ -119,4 +163,7 @@ export class AdminProductComponent implements OnInit {
     navigateToDetailProduct(data: IProduct): void {
         this.router.navigate(['dashboard/product/detail', data.id_product]);
     }
+
+    get id_kategori(): AbstractControl { return this.FormJenis.get('id_kategori') as AbstractControl }
+    get jenis(): AbstractControl { return this.FormJenis.get('jenis') as AbstractControl }
 }

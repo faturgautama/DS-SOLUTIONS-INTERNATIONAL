@@ -38,9 +38,21 @@ export class DashboardService {
         return this.firebaseService.getRequest(JENIS_API)
             .pipe(
                 map((result: IJenis[]) => {
-                    return result.filter((item) => { return item.id_kategori == id_kategori });
+                    let data = [];
+
+                    for (const key in result) {
+                        if (result.hasOwnProperty(key)) {
+                            data.push({ ...result[key], id_jenis: key });
+                        }
+                    };
+
+                    return data.filter((item) => { return item.id_kategori == id_kategori });
                 })
             )
+    }
+
+    saveJenis(data: any): Observable<any> {
+        return this.firebaseService.postRequest(JENIS_API, data);
     }
 
     getProduct(): Observable<IProduct[]> {
@@ -107,6 +119,10 @@ export class DashboardService {
         return this.firebaseService.patchRequest(`${environment.firebaseConfig.databaseURL}/event/${data.id_event}.json`, data);
     }
 
+    deleteEvent(id_event: string): Observable<any> {
+        return this.firebaseService.deleteRequest(`${environment.firebaseConfig.databaseURL}/event/${id_event}.json`);
+    }
+
     saveMessage(data: IMessage): Observable<any> {
         data.date_created = new Date();
         return this.firebaseService.postRequest(MESSAGE_API, data);
@@ -162,5 +178,9 @@ export class DashboardService {
 
     updateCareer(data: ICareer): Observable<any> {
         return this.firebaseService.patchRequest(`${environment.firebaseConfig.databaseURL}/career/${data.id_career}.json`, data);
+    }
+
+    deleteCareer(id_career: string): Observable<any> {
+        return this.firebaseService.deleteRequest(`${environment.firebaseConfig.databaseURL}/career/${id_career}.json`);
     }
 }

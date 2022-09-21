@@ -47,6 +47,15 @@ export class FirebaseService {
             );
     }
 
+    deleteRequest(url: string): Observable<any> {
+        return this.httpClient.delete(url)
+            .pipe(
+                catchError((error: HttpErrorResponse): any => {
+                    this.handlingError(error);
+                })
+            );
+    }
+
     private handlingError(error: HttpErrorResponse) {
         if (error?.error.error == "Auth token is expired") {
             this.utilityService.showCustomAlert('warning', 'Oops', 'Session Habis, Mohon Login Ulang')

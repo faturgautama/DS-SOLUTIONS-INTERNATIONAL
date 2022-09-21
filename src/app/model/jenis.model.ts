@@ -1,6 +1,6 @@
 export interface IJenis {
     id_kategori: number;
     kategori: string;
-    id_jenis: number;
+    id_jenis: string;
     jenis: string;
 }

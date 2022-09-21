@@ -81,6 +81,7 @@ export class AdminEventAddComponent implements OnInit {
                     this.ActionButton = [
                         { id: 'back', title: 'Back', icon: 'fas fa-chevron-left fa-sm' },
                         { id: 'update', title: 'Update', icon: 'fas fa-save fa-sm' },
+                        { id: 'delete', title: 'Delete', icon: 'fas fa-trash fa-sm' },
                     ];
                 });
         }
@@ -96,6 +97,15 @@ export class AdminEventAddComponent implements OnInit {
                 break;
             case 'update':
                 this.handleUpdateProduct(this.FormEvent.value);
+                break;
+            case 'delete':
+                this.dashboardService.deleteEvent(this.id_event.value)
+                    .subscribe((result) => {
+                        this.utilityService.showCustomAlert('success', 'Success', 'Berhasil Hapus Data')
+                            .then(() => {
+                                this.router.navigateByUrl('dashboard/event');
+                            });
+                    });
                 break;
             default:
                 break;

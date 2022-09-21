@@ -132,7 +132,7 @@ export class AdminProductAddComponent implements OnInit {
     }
 
     handleChangeJenis(args: any): void {
-        this.id_jenis.setValue(parseInt(args.target.selectedOptions[0].value));
+        this.id_jenis.setValue(args.target.selectedOptions[0].value);
         this.jenis.setValue(args.target.selectedOptions[0].text);
     }
 

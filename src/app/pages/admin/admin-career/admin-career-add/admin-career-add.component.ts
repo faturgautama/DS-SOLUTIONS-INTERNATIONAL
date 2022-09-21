@@ -76,6 +76,7 @@ export class AdminCareerAddComponent implements OnInit {
                     this.ActionButton = [
                         { id: 'back', title: 'Back', icon: 'fas fa-chevron-left fa-sm' },
                         { id: 'update', title: 'Update', icon: 'fas fa-save fa-sm' },
+                        { id: 'delete', title: 'Delete', icon: 'fas fa-trash fa-sm' },
                     ];
                 });
         }
@@ -92,6 +93,15 @@ export class AdminCareerAddComponent implements OnInit {
             case 'update':
                 this.handleUpdateCareer(this.Form.value);
                 break;
+            case 'delete':
+                this.dashboardService.deleteCareer(this.id_career.value)
+                    .subscribe((result) => {
+                        this.utilityService.showCustomAlert('success', 'Success', 'Berhasil Hapus Data')
+                            .then(() => {
+                                this.router.navigateByUrl('dashboard/career');
+                            })
+                    })
+                break;
             default:
                 break;
         }
@@ -104,6 +114,7 @@ export class AdminCareerAddComponent implements OnInit {
                     this.utilityService.showCustomAlert('success', 'Success', 'Data Berhasil Disimpan')
                         .then(() => {
                             this.resetForm();
+                            this.router.navigateByUrl('dashboard/career');
                         })
                 }
             })

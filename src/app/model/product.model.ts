@@ -1,7 +1,7 @@
 export interface IProduct {
     id_kategori: number;
     kategori: string;
-    id_jenis: number;
+    id_jenis: string;
     jenis: string;
     id_product: string;
     product: string;
