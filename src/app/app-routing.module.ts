@@ -8,6 +8,9 @@ import { AdminEventComponent } from './pages/admin/admin-event/admin-event.compo
 import { AdminHomeComponent } from './pages/admin/admin-home/admin-home.component';
 import { AdminMessageComponent } from './pages/admin/admin-message/admin-message.component';
 import { AdminProductAddComponent } from './pages/admin/admin-product/admin-product-add/admin-product-add.component';
+import { AdminProductBrandComponent } from './pages/admin/admin-product/admin-product-brand/admin-product-brand.component';
+import { AdminProductJenisComponent } from './pages/admin/admin-product/admin-product-jenis/admin-product-jenis.component';
+import { AdminProductKategoriComponent } from './pages/admin/admin-product/admin-product-kategori/admin-product-kategori.component';
 import { AdminProductComponent } from './pages/admin/admin-product/admin-product.component';
 import { AuthenticationComponent } from './pages/admin/authentication/authentication.component';
 import { BerandaComponent } from './pages/beranda/beranda.component';
@@ -29,6 +32,13 @@ const routes: Routes = [
     {
         path: "dashboard", children: [
             { path: 'home', component: AdminHomeComponent, data: { title: 'Dashboard Home' } },
+            {
+                path: 'setup-data', children: [
+                    { path: 'setup-kategori-product', component: AdminProductKategoriComponent, data: { title: 'Setup Kategori Product' } },
+                    { path: 'setup-brand', component: AdminProductBrandComponent, data: { title: 'Setup Brand' } },
+                    { path: 'setup-jenis-product', component: AdminProductJenisComponent, data: { title: 'Setup Jenis Product' } },
+                ]
+            },
             { path: 'product', component: AdminProductComponent, data: { title: 'Product' } },
             { path: 'product/add', component: AdminProductAddComponent, data: { title: 'Add Product' } },
             { path: 'product/detail/:id', component: AdminProductAddComponent, data: { title: 'Detail Product' } },
@@ -44,7 +54,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { useHash: true, scrollPositionRestoration: 'enabled' })],
+    imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

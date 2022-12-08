@@ -8,6 +8,14 @@ export class UtilityService {
 
     constructor() { }
 
+    showLoader(): void {
+        Swal.showLoading();
+    }
+
+    closeLoader(): void {
+        Swal.close();
+    }
+
     showCustomAlert(icon: any, title: string, message: string): Promise<any> {
         return Swal.fire({
             icon: icon,

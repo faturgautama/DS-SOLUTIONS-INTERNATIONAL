@@ -14,6 +14,13 @@ export class AdminDashboardComponent implements OnInit {
 
     SidebarMenu: any[] = [
         { id: "home", title: "Home", url: "dashboard/home" },
+        {
+            id: "setup-data", title: "Setup Data", url: "", child: [
+                { id: 'setup-kategori-product', title: "Setup Kategori", url: "dashboard/setup-data/setup-kategori-product" },
+                { id: 'setup-brand', title: "Setup Brand", url: "dashboard/setup-data/setup-brand" },
+                { id: 'setup-jenis', title: "Setup Jenis Product", url: "dashboard/setup-data/setup-jenis-product" },
+            ]
+        },
         { id: "product", title: "Product", url: "dashboard/product" },
         { id: "event", title: "Event", url: "dashboard/event" },
         { id: "message", title: "Message", url: "dashboard/message" },
@@ -29,19 +36,8 @@ export class AdminDashboardComponent implements OnInit {
     }
 
     handleClickSidebarItem(data: any): void {
-        const el = document.getElementById(`${data.id}_a`) as HTMLElement;
-
-        this.SidebarMenu.forEach((item) => {
-            if (item.id != data.id) {
-                const otherEl = document.getElementById(`${item.id}_a`) as HTMLElement;
-                otherEl.classList.contains("active") ? otherEl.classList.remove("active") : null;
-            }
-        });
-
-        setTimeout(() => {
-            el.classList.contains("active") ? null : el.classList.add("active");
-            this.router.navigateByUrl(data.url);
-        }, 500);
+        console.log(data)
+        this.router.navigateByUrl(data.url);
     }
 
     handleCLickSignOut(): void {

@@ -3,29 +3,51 @@
     </app-action-button>
 
     <div class="row" [formGroup]="FormProduct">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
             <!-- Kategori -->
-            <div class="row mb-3">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row mb-4 align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <label for="kategori" class="form-label">
                         Kategori
                     </label>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                     <select id="kategoriDropdown" type="text" class="form-select"
                         (change)="handleChangeKategori($event)">
                         <option selected>Pilih Kategori</option>
-                        <option *ngFor="let item of Kategori | async" [value]="item.id_kategori" [text]="item.kategori">
+                        <option *ngFor="let item of Kategori" [value]="item.id_kategori" [text]="item.kategori">
                             {{ item.kategori }}
                         </option>
                     </select>
                 </div>
             </div>
 
+            <!-- Brand -->
+            <div class="row mb-4 align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <label for="brandDropdown" class="form-label">
+                        Brand
+                    </label>
+
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <select id="brandDropdown" type="text" class="form-select" (change)="handleChangeBrand($event)">
+                        <option selected>Pilih Brand</option>
+                        <option *ngFor="let item of Brand" [value]="item.id_brand" [text]="item.brand">
+                            {{ item.brand }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
             <!-- Jenis -->
-            <div class="row mb-3">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label for="jenis" class="form-label">
+            <div class="row mb-4 align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <label for="jenisDropdown" class="form-label">
                         Jenis
                     </label>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                     <select id="jenisDropdown" type="text" class="form-select" (change)="handleChangeJenis($event)">
                         <option selected>Pilih Jenis</option>
                         <option *ngFor="let item of Jenis" [value]="item.id_jenis" [text]="item.jenis">
@@ -36,68 +58,74 @@
             </div>
 
             <!-- Product -->
-            <div class="row mb-3">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row mb-4 align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <label for="product" class="form-label">
-                        Product
+                        Nama Product
                     </label>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                     <input type="text" class="form-control" formControlName="product">
+                </div>
+            </div>
+
+            <!-- Harga -->
+            <div class="row mb-4 align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <label for="product" class="form-label">
+                        Harga
+                    </label>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input type="number" class="form-control text-end" formControlName="harga">
+                </div>
+            </div>
+
+            <!-- Foto -->
+            <div class="row mb-4 align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <label for="product" class="form-label">
+                        Foto Product
+                    </label>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 d-grid gap-2">
+                    <input type="file" class="form-control" accept="image/*" (change)="handleChangeFoto($event)">
+
+                    <button *ngIf="FormProductState == 'update'" class="btn btn-primary btn-sm"
+                        (click)="handleOpenFotoProduct(SelectedProduct)">
+                        Lihat Foto Product
+                    </button>
+                </div>
+            </div>
+
+            <!-- Brochure -->
+            <div class="row mb-0 align-items-center">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <label for="product" class="form-label">
+                        File Brochure
+                    </label>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 d-grid gap-2">
+                    <input type="file" class="form-control" accept="image/*" (change)="handleChangeBrochure($event)">
+
+                    <button *ngIf="FormProductState == 'update'" class="btn btn-primary btn-sm"
+                        (click)="handleOpenBrochure(SelectedProduct)">
+                        Lihat File Brochure
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <!-- Harga -->
-            <div class="row mb-3">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label for="product" class="form-label">
-                        Harga
-                    </label>
-                    <input type="number" class="form-control" formControlName="harga">
-                </div>
-            </div>
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
 
             <!-- Keterangan -->
             <div class="row mb-3">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label for="keterangan" class="form-label">
-                        Keterangan
+                        Description
                     </label>
-                    <textarea type="number" class="form-control" formControlName="keterangan" rows="4"></textarea>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-            <!-- Is Active -->
-            <div class="row mb-4">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label for="product" class="form-label">
-                        Status Product
-                    </label>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="is_active" id="radioIsActiveTrue"
-                            [value]="true" formControlName="is_active">
-                        <label class="form-check-label" for="radioIsActiveTrue">Active</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="is_active" id="radioIsActiveFalse"
-                            [value]="false" formControlName="is_active">
-                        <label class="form-check-label" for="radioIsActiveFalse">Inactive</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Foto -->
-            <div class="row mb-3">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label for="product" class="form-label">
-                        Foto
-                    </label>
-                    <input type="file" class="form-control" formControlName="path_foto"
-                        (change)="handleChangeFoto($event)">
+                    <ejs-richtexteditor [toolbarSettings]="ToolbarRte" [height]="380" formControlName="keterangan">
+                    </ejs-richtexteditor>
                 </div>
             </div>
         </div>

@@ -6,8 +6,20 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li *ngFor="let item of SidebarMenu" class="nav-item">
-                <a id="{{ item.id }}_a" class="nav-link cursor-pointer" (click)="handleClickSidebarItem(item)">
+                <a id="{{ item.id }}_a" class="nav-link cursor-pointer"
+                    (click)="item.child ? null : handleClickSidebarItem(item)">
+                    <i *ngIf="item.child" class="fas fa-chevron-right fs-9 me-1"></i>
+                    <span *ngIf="!item.child">- </span>
                     {{ item.title }}
+
+                    <!-- Has Child -->
+                    <ul *ngIf="item.child" class="nav nav-pills flex-column">
+                        <li *ngFor="let child of item.child" class="nav-item">
+                            <a class="nav-link cursor-pointer" (click)="handleClickSidebarItem(child)">
+                                <i class="fas fa-chevron-right fs-9 me-1"></i> {{ child.title }}
+                            </a>
+                        </li>
+                    </ul>
                 </a>
             </li>
         </ul>

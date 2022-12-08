@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IJenis } from 'src/app/model/jenis.model';
+import { IKategori } from 'src/app/model/kategori.model';
+import { DashboardService } from 'src/app/services/dashboard.service';
 import { ICardProduct } from '../../card/card-product/card-product.component';
 
 @Component({
@@ -8,19 +11,18 @@ import { ICardProduct } from '../../card/card-product/card-product.component';
 })
 export class SectionOurProductComponent implements OnInit {
 
-    Product: ICardProduct[];
+    Product: IKategori[] = [];
 
-    constructor() {
-        this.Product = [
-            { id: "1", title: "Laboratory Testing Equipments", image: "../../../../assets/image/tigran-kharatyan-ezX-4IMPP1s-unsplash.jpg", content: "" },
-            { id: "2", title: "Manufacturing Machines", image: "../../../../assets/image/tigran-kharatyan-MvkpAOX329A-unsplash.jpg", content: "" },
-            { id: "3", title: "Reefer Containers for Rental & Sale", image: "../../../../assets/image/tigran-kharatyan-ezX-4IMPP1s-unsplash.jpg", content: "" },
-            { id: "4", title: "Ceramics Materials", image: "../../../../assets/image/tigran-kharatyan-MvkpAOX329A-unsplash.jpg", content: "" },
-            { id: "5", title: "Dental Equipments and Materials", image: "../../../../assets/image/tigran-kharatyan-ezX-4IMPP1s-unsplash.jpg", content: "" },
-        ]
-    }
+    constructor(
+        private dashboardService: DashboardService,
+    ) { }
 
     ngOnInit(): void {
+        this.dashboardService.getKategori()
+            .subscribe((result) => {
+                console.log(result);
+                this.Product = result;
+            })
     }
 
 }

@@ -1,5 +1,6 @@
 export interface IKategori {
-    id_kategori: number;
+    id_kategori: string;
     kategori: string;
     keterangan: string;
+    path_foto: string;
 }

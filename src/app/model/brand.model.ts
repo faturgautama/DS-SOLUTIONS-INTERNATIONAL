@@ -1,8 +1,7 @@
-export interface IJenis {
+export interface IBrand {
     id_kategori: string;
     kategori: string;
     id_brand: string;
     brand: string;
-    id_jenis: string;
-    jenis: string;
+    keterangan: string;
 }

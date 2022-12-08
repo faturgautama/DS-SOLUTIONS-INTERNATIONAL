@@ -43,6 +43,11 @@ import { AdminEventAddComponent } from './pages/admin/admin-event/admin-event-ad
 import { AdminMessageComponent } from './pages/admin/admin-message/admin-message.component';
 import { AdminCareerComponent } from './pages/admin/admin-career/admin-career.component';
 import { AdminCareerAddComponent } from './pages/admin/admin-career/admin-career-add/admin-career-add.component';
+import { AdminProductKategoriComponent } from './pages/admin/admin-product/admin-product-kategori/admin-product-kategori.component';
+import { AdminProductBrandComponent } from './pages/admin/admin-product/admin-product-brand/admin-product-brand.component';
+import { AdminProductJenisComponent } from './pages/admin/admin-product/admin-product-jenis/admin-product-jenis.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { GridComponent } from './components/grid/grid.component';
 
 @NgModule({
     declarations: [
@@ -77,7 +82,11 @@ import { AdminCareerAddComponent } from './pages/admin/admin-career/admin-career
         AdminEventAddComponent,
         AdminMessageComponent,
         AdminCareerComponent,
-        AdminCareerAddComponent
+        AdminCareerAddComponent,
+        AdminProductKategoriComponent,
+        AdminProductBrandComponent,
+        AdminProductJenisComponent,
+        GridComponent
     ],
     imports: [
         BrowserModule,
@@ -89,6 +98,7 @@ import { AdminCareerAddComponent } from './pages/admin/admin-career/admin-career
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireStorageModule,
         RichTextEditorModule,
+        AgGridModule,
     ],
     providers: [
         ToolbarService,

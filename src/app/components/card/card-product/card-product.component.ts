@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IKategori } from 'src/app/model/kategori.model';
 
 export interface ICardProduct {
     id: string;
@@ -14,12 +15,12 @@ export interface ICardProduct {
 })
 export class CardProductComponent implements OnInit {
 
-    @Input('CardProduct') CardProduct: ICardProduct;
+    @Input('CardProduct') CardProduct: IKategori;
 
     @Output('clickedCardProduct') clickedCardProduct = new EventEmitter<ICardProduct>();
 
     constructor() {
-        this.CardProduct = { id: "", title: "", content: "", image: "" }
+        this.CardProduct = { id_kategori: "", kategori: "", keterangan: "", path_foto: "" }
     }
 
     ngOnInit(): void {

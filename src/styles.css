@@ -10,6 +10,9 @@
 @import "~@syncfusion/ej2-popups/styles/tailwind.css";
 @import "~@syncfusion/ej2-richtexteditor/styles/tailwind.css";
 
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+
 :root {
   --biru: #0088cc;
   --hitam: #0e0e0e;
@@ -45,4 +48,12 @@ button.btn-biru:hover {
   background-color: var(--biru);
   border: 1px solid var(--bs-gray-100);
   color: white;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-9 {
+  font-size: 9px;
 }
