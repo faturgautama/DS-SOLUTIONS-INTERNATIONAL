@@ -48,6 +48,9 @@ import { AdminProductBrandComponent } from './pages/admin/admin-product/admin-pr
 import { AdminProductJenisComponent } from './pages/admin/admin-product/admin-product-jenis/admin-product-jenis.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { GridComponent } from './components/grid/grid.component';
+import { SectionJenisProductComponent } from './components/section/section-jenis-product/section-jenis-product.component';
+import { SectionBrandProductComponent } from './components/section/section-brand-product/section-brand-product.component';
+import { DetailProductComponent } from './components/section/detail-product/detail-product.component';
 
 @NgModule({
     declarations: [
@@ -86,7 +89,10 @@ import { GridComponent } from './components/grid/grid.component';
         AdminProductKategoriComponent,
         AdminProductBrandComponent,
         AdminProductJenisComponent,
-        GridComponent
+        GridComponent,
+        SectionJenisProductComponent,
+        SectionBrandProductComponent,
+        DetailProductComponent
     ],
     imports: [
         BrowserModule,

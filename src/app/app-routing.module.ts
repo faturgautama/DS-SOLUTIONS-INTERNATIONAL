@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailProductComponent } from './components/section/detail-product/detail-product.component';
+import { SectionBrandProductComponent } from './components/section/section-brand-product/section-brand-product.component';
+import { SectionJenisProductComponent } from './components/section/section-jenis-product/section-jenis-product.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AdminCareerAddComponent } from './pages/admin/admin-career/admin-career-add/admin-career-add.component';
 import { AdminCareerComponent } from './pages/admin/admin-career/admin-career.component';
@@ -23,7 +26,10 @@ import { ProductComponent } from './pages/product/product.component';
 const routes: Routes = [
     { path: "", component: BerandaComponent, data: { title: 'Beranda' } },
     { path: "product", component: ProductComponent, data: { title: 'Product' } },
-    { path: "product-per-kategori/:id", component: ListProductByKategoriComponent, data: { title: 'List Product' } },
+    { path: "brand-per-kategori/:id", component: SectionBrandProductComponent, data: { title: 'List Brand per Kategori' } },
+    { path: "jenis-per-brand/:id", component: SectionJenisProductComponent, data: { title: 'List Jenis per Brand' } },
+    { path: "product-per-jenis/:id", component: ListProductByKategoriComponent, data: { title: 'List Product per Jenis' } },
+    { path: "product/:id", component: DetailProductComponent, data: { title: 'Detail Product' } },
     { path: "event", component: EventComponent, data: { title: 'Event' } },
     { path: "about-us", component: AboutUsComponent, data: { title: 'About Us' } },
     { path: "contact", component: ContactComponent, data: { title: 'Contact' } },

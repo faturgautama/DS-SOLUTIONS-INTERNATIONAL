@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { IKategori } from 'src/app/model/kategori.model';
 
 export interface ICardProduct {
@@ -17,16 +18,16 @@ export class CardProductComponent implements OnInit {
 
     @Input('CardProduct') CardProduct: IKategori;
 
-    @Output('clickedCardProduct') clickedCardProduct = new EventEmitter<ICardProduct>();
-
-    constructor() {
+    constructor(
+        private router: Router,
+    ) {
         this.CardProduct = { id_kategori: "", kategori: "", keterangan: "", path_foto: "" }
     }
 
     ngOnInit(): void {
     }
 
-    handleClickCardProduct(data: ICardProduct): void {
-        this.clickedCardProduct.emit(data);
+    handleClickCardProduct(data: IKategori): void {
+        this.router.navigate(['brand-per-kategori', data.id_kategori]);
     }
 }

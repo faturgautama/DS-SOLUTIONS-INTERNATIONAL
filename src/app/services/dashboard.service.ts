@@ -50,6 +50,10 @@ export class DashboardService {
             )
     }
 
+    getKategoriById(id_kategori: string): Observable<IKategori[]> {
+        return this.firebaseService.getRequest(`${environment.firebaseConfig.databaseURL}/kategori/${id_kategori}.json`);
+    }
+
     updateKategori(data: any): Observable<any> {
         return this.firebaseService.patchRequest(`${environment.firebaseConfig.databaseURL}/kategori/${data.id_kategori}.json`, data);
     }
@@ -80,6 +84,27 @@ export class DashboardService {
             )
     }
 
+    getBrandById(id_brand: string): Observable<any> {
+        return this.firebaseService.getRequest(`${environment.firebaseConfig.databaseURL}/brand/${id_brand}.json`);
+    }
+
+    getBrandByIdKategori(id_kategori: string): Observable<IBrand[]> {
+        return this.firebaseService.getRequest(BRAND_API)
+            .pipe(
+                map((result: IBrand[]) => {
+                    let data = [];
+
+                    for (const key in result) {
+                        if (result.hasOwnProperty(key)) {
+                            data.push({ ...result[key], id_brand: key });
+                        }
+                    };
+
+                    return data.filter((item) => { return item.id_kategori == id_kategori });
+                })
+            )
+    }
+
     updateBrand(data: IBrand): Observable<any> {
         return this.firebaseService.patchRequest(`${environment.firebaseConfig.databaseURL}/brand/${data.id_brand}.json`, data);
     }
@@ -106,6 +131,27 @@ export class DashboardService {
                     };
 
                     return data;
+                })
+            )
+    }
+
+    getJenisById(id_jenis: string): Observable<any> {
+        return this.firebaseService.getRequest(`${environment.firebaseConfig.databaseURL}/jenis/${id_jenis}.json`);
+    }
+
+    getJenisByIdBrand(id_brand: string): Observable<IJenis[]> {
+        return this.firebaseService.getRequest(JENIS_API)
+            .pipe(
+                map((result: IJenis[]) => {
+                    let data = [];
+
+                    for (const key in result) {
+                        if (result.hasOwnProperty(key)) {
+                            data.push({ ...result[key], id_jenis: key });
+                        }
+                    };
+
+                    return data.filter((item) => { return item.id_brand == id_brand });
                 })
             )
     }
@@ -142,6 +188,23 @@ export class DashboardService {
 
     getProductById(id_product: string): Observable<IProduct> {
         return this.firebaseService.getRequest(`${environment.firebaseConfig.databaseURL}/product/${id_product}.json`);
+    }
+
+    getProductByIdJenis(id_jenis: string): Observable<IProduct[]> {
+        return this.firebaseService.getRequest(PRODUCT_API)
+            .pipe(
+                map((result: { [key: string]: any }) => {
+                    let data = [];
+
+                    for (const key in result) {
+                        if (result.hasOwnProperty(key)) {
+                            data.push({ ...result[key], id_product: key });
+                        }
+                    };
+
+                    return data.filter((item) => { return item.id_jenis == id_jenis });
+                })
+            )
     }
 
     saveProduct(data: IProduct): Observable<any> {

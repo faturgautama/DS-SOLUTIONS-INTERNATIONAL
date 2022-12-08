@@ -1,0 +1,53 @@
+<app-landing-page>
+    <section id="detail_product">
+        <div class="container">
+            <!-- Brand -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <p class="text_brand mb-0">
+                        {{ DetailProduct?.brand }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Heading -->
+            <div class="row mb-4">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <app-heading-typograph [Heading]="DetailProduct ? DetailProduct.product : ''">
+                    </app-heading-typograph>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center">
+                    <img [src]="DetailProduct?.path_foto" alt="path_foto" style="width: 100%; height: auto;"
+                        class="rounded">
+                </div>
+            </div>
+
+            <!-- Keterangan -->
+            <div class="row mb-3">
+                <p class="text_keterangan mb-0 text-center" [innerHTML]="DetailProduct?.keterangan">
+                </p>
+            </div>
+
+            <!-- Harga -->
+            <div class="row mb-3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <p class="text_harga mb-0">
+                        Harga {{ DetailProduct?.harga | currency: 'Rp. ' }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <button class="btn btn-grey" type="button">
+                        See Brochure
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</app-landing-page>

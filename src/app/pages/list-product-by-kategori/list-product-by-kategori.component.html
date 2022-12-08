@@ -1,9 +1,48 @@
 <app-landing-page>
-    <section id="list_product_per_kategori">
+    <section id="product_per_jenis">
         <div class="container">
-            <div class="row mb-2">
+
+            <!-- Heading -->
+            <div class="row mb-4">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                    <app-heading-typograph [Heading]="'List Product'"></app-heading-typograph>
+                    <app-heading-typograph [Heading]="DetailJenis ? DetailJenis.jenis : ''">
+                    </app-heading-typograph>
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center">
+                <div *ngFor="let item of Product" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center mb-5">
+                    <div class="card shadow-sm border-0 bg-transparent">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                                    <img [src]="item.path_foto" alt=""
+                                        style="height: 200px; width: 100%; border-radius: 5px">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <p class="brand_title fw-semibold mb-3">
+                                        {{ item.product }}
+                                    </p>
+                                    <p class="product_description mb-1">
+                                        Brand {{ item.brand }}
+                                    </p>
+                                    <p class="product_description mb-3">
+                                        Harga {{ item.harga | currency: 'Rp. '}}
+                                    </p>
+
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 gap-2">
+                                    <button class="btn btn-grey me-2" type="button" (click)="handleClickBrochure(item)">
+                                        See Brochure
+                                    </button>
+                                    <button class="btn btn-biru" type="button" (click)="handleClickProduct(item)">
+                                        See Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

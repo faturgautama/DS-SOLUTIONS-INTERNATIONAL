@@ -50,6 +50,13 @@ button.btn-biru:hover {
   color: white;
 }
 
+button.btn-grey {
+  border-radius: 10px;
+  background-color: var(--biru);
+  border: 1px solid var(--bs-gray-100);
+  color: var(--bs-gray-100);
+}
+
 .fs-12 {
   font-size: 12px;
 }

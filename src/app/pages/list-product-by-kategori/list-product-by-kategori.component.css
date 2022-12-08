@@ -1,0 +1,14 @@
+section#product_per_jenis {
+  height: 100%;
+  padding-top: 4rem;
+  margin-bottom: 2rem;
+  background-color: var(--bs-gray-100);
+}
+
+p.jenis_title {
+  font-size: 2rem;
+}
+
+p.product_description {
+  font-size: 15px;
+}
